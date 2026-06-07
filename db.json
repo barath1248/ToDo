@@ -8,6 +8,5 @@
       "id": "H9Qq5v1eMVk"
     }
   ],
-  "tasks": [],
-  "$schema": "./node_modules/json-server/schema.json"
+  "tasks": []
 }
