@@ -1,6 +1,7 @@
-import "./login.css";
+import "../styles/login.css";
 
 export function Login() {
+  
   return (
     <div className="login-container">
       <h2>Welcome Back</h2>

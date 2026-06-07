@@ -1,5 +1,5 @@
 import {  Outlet } from "react-router-dom";
-import "./Home.css";
+import "../styles/Home.css";
 export  function Home() {
   return (
     <div className="home">
