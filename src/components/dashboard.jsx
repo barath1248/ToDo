@@ -1,100 +1,90 @@
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 import "../styles/Dashboard.css";
 
 export function Userdashboard() {
+  const [cookies, , removeCookie] = useCookies(["userId"]);
+  const navigate = useNavigate();
+
+  function handleSignout() {
+    removeCookie("userId");
+    navigate("/");
+  }
+
   return (
     <div className="dashboard">
-
       {/* Sidebar */}
-      <aside className="sidebar">
-        <h2>TaskFlow</h2>
+      <div className="sidebar">
+        <h2 className="logo">TaskFlow</h2>
 
-        <ul>
-          <li className="active">Dashboard</li>
-          <li>Tasks</li>
-          <li>Projects</li>
-          <li>Calendar</li>
-          <li>Settings</li>
-        </ul>
-      </aside>
+        <h3 className="username">{cookies["userId"]}</h3>
+
+        <button className="signout-btn" onClick={handleSignout}>
+          Sign Out
+        </button>
+
+        <div className="menu">
+          <h3>Appointments</h3>
+          <h3>Calendar</h3>
+        </div>
+      </div>
 
       {/* Main Content */}
-      <main className="main-content">
+      <div className="content">
+        <div className="topbar">
+          <div>
+            <input
+              type="text"
+              placeholder="Search Appointments"
+              className="search-box"
+            />
+          </div>
 
-        {/* Header */}
-        <div className="header">
-          <h1>Dashboard</h1>
-
-          <div className="profile">
-            Welcome, Barath
+          <div>
+            <button className="add-btn">
+              Add Appointment
+            </button>
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="stats">
+        {/* Appointment Table */}
+        <div className="table-container">
+          <table>
+            <caption>Appointment Details</caption>
 
-          <div className="card">
-            <h3>Total Tasks</h3>
-            <h2>48</h2>
-          </div>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-          <div className="card">
-            <h3>Completed</h3>
-            <h2>32</h2>
-          </div>
+            <tbody>
+              <tr>
+                <td>Doctor Visit</td>
+                <td>General Checkup</td>
+                <td>11-Jun-2026</td>
+                <td>
+                  <button className="edit-btn">Edit</button>
+                  <button className="delete-btn">Delete</button>
+                </td>
+              </tr>
 
-          <div className="card">
-            <h3>Pending</h3>
-            <h2>16</h2>
-          </div>
-
-          <div className="card">
-            <h3>Productivity</h3>
-            <h2>84%</h2>
-          </div>
-
+              <tr>
+                <td>Meeting</td>
+                <td>Project Discussion</td>
+                <td>15-Jun-2026</td>
+                <td>
+                  <button className="edit-btn">Edit</button>
+                  <button className="delete-btn">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        {/* Content Grid */}
-        <div className="content-grid">
-
-          {/* Tasks */}
-          <div className="tasks-section">
-            <h2>Today's Tasks</h2>
-
-            <div className="task-item">
-              <span>Design Login Page</span>
-              <span className="high">High</span>
-            </div>
-
-            <div className="task-item">
-              <span>Connect API</span>
-              <span className="medium">Medium</span>
-            </div>
-
-            <div className="task-item">
-              <span>Fix Bugs</span>
-              <span className="low">Low</span>
-            </div>
-
-            <div className="task-item">
-              <span>Deploy Project</span>
-              <span className="high">High</span>
-            </div>
-          </div>
-
-          {/* Activity */}
-          <div className="activity-section">
-            <h2>Recent Activity</h2>
-
-            <p>✔ Completed Register Module</p>
-            <p>✔ Added Login Page</p>
-            <p>🕒 Dashboard UI In Progress</p>
-            <p>📅 Meeting Scheduled</p>
-          </div>
-
-        </div>
-
-      </main>
+      </div>
     </div>
   );
 }

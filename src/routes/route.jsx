@@ -26,7 +26,7 @@ const router=createBrowserRouter([
     {
         path:"/dashboard",
         element:<Userdashboard />
-    }
+    },
 ]);
 
 export default router;
