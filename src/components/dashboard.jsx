@@ -34,10 +34,7 @@ export function Userdashboard() {
         <div className="topbar">
           <div>
             <input
-              type="text"
-              placeholder="Search Appointments"
-              className="search-box"
-            />
+              type="text" placeholder="Search Appointments" className="search-box" />
           </div>
 
           <div>
